@@ -1,7 +1,7 @@
 // Creating the map object
 let myMap = L.map("map", {
   center: [39.0, 34.0],
-  zoom: 1
+  zoom: 2
 });
 
 // Adding the tile layer
@@ -49,7 +49,7 @@ d3.json(link).then(function(response) {
         color: "black",
         fillColor: color,
         // Adjust the radius.
-        radius: (features[i].geometry.coordinates[2] * 5000)/zoom
+        radius: (features[i].properties.mag * 100000)/zoom
       }).bindPopup(`<h1>${features[i].properties.place}</h1> 
                     <hr> <h3>Magnitude: ${features[i].properties.mag}</h3>
                     <h3>Depth: ${features[i].geometry.coordinates[2]}</h3>`)
@@ -90,7 +90,7 @@ d3.json(link).then(function(response) {
         color: "black",
         fillColor: color,
         // Adjust the radius.
-        radius: (features[i].geometry.coordinates[2] * 5000)
+        radius: (features[i].properties.mag * 100000)
       }).bindPopup(`<h1>${features[i].properties.place}</h1> 
                     <hr> <h3>Magnitude: ${features[i].properties.mag}</h3>
                     <h3>Depth: ${features[i].geometry.coordinates[2]}</h3>`)
